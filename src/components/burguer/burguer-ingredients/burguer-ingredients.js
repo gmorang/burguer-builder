@@ -1,39 +1,45 @@
 import * as React from "react";
 import "./burguer-ingredient.css";
+import PropTypes from "prop-types";
 
-const burguerIngredient = props => {
-  let ingredient = null;
+class BurguerIngredient extends React.Component {
+  render() {
+    let ingredient = null;
 
-  switch (props.type) {
-    case "bread-bottom":
-      ingredient = <div className="BreadBottom" />;
-      break;
-    case "bread-top":
-      ingredient = (
-        <div className="BreadTop">
-          <div className="Seeds1" />
-          <div className="Seeds2" />
-        </div>
-      );
-      break;
-    case "meat":
-      ingredient = <div className="Meat" />;
-      break;
-    case "cheese":
-      ingredient = <div className="Cheese" />;
-      break;
+    switch (props.type) {
+      case "bread-bottom":
+        ingredient = <div className="BreadBottom" />;
+        break;
+      case "bread-top":
+        ingredient = (
+          <div className="BreadTop">
+            <div className="Seeds1" />
+            <div className="Seeds2" />
+          </div>
+        );
+        break;
+      case "meat":
+        ingredient = <div className="Meat" />;
+        break;
+      case "cheese":
+        ingredient = <div className="Cheese" />;
+        break;
 
-    case "salad":
-      ingredient = <div className="Salad" />;
-      break;
-    case "bacon":
-      ingredient = <div className="Bacon" />;
-      break;
-    default:
-      ingredient = null;
+      case "salad":
+        ingredient = <div className="Salad" />;
+        break;
+      case "bacon":
+        ingredient = <div className="Bacon" />;
+        break;
+      default:
+        ingredient = null;
+    }
+
+    return ingredient;
   }
+}
 
-  return ingredient;
+BurguerIngredient.propTypes = {
+  type: PropTypes.string.isRequired
 };
-
-export default burguerIngredient;
+export default BurguerIngredient;
