@@ -20,6 +20,8 @@ class BuildControls extends React.Component {
             label={ctrl.label}
             type={ctrl.type}
             added={() => this.props.ingredientAdded(ctrl.type)}
+            removed={() => this.props.ingredientRemoved(ctrl.type)}
+            disabled={this.props.disabled[ctrl.type]}
           />
         ))}
       </div>

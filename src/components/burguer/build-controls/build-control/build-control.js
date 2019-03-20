@@ -7,7 +7,13 @@ class BuildControl extends React.Component {
     return (
       <div className="build-control">
         <div className="label">{this.props.label}</div>
-        <button className="less">Less</button>
+        <button
+          className="less"
+          disabled={this.props.disabled}
+          onClick={this.props.removed}
+        >
+          Less
+        </button>
         <button className="more" onClick={this.props.added}>
           More
         </button>
