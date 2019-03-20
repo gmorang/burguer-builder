@@ -14,6 +14,9 @@ class BuildControls extends React.Component {
   render() {
     return (
       <div className="build-controls">
+        <p>
+          Current Price: <strong>${this.props.price.toFixed(2)}</strong>
+        </p>
         {controls.map(ctrl => (
           <BuildControl
             key={ctrl.label}
@@ -24,6 +27,9 @@ class BuildControls extends React.Component {
             disabled={this.props.disabled[ctrl.type]}
           />
         ))}
+        <button disabled={!this.props.purchasable} className="order-button">
+          ORDER NOW
+        </button>
       </div>
     );
   }
