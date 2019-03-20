@@ -27,7 +27,11 @@ class BuildControls extends React.Component {
             disabled={this.props.disabled[ctrl.type]}
           />
         ))}
-        <button disabled={!this.props.purchasable} className="order-button">
+        <button
+          disabled={!this.props.purchasable}
+          className="order-button"
+          onClick={this.props.ordered}
+        >
           ORDER NOW
         </button>
       </div>

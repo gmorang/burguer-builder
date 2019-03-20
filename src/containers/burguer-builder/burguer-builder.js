@@ -2,6 +2,8 @@ import * as React from "react";
 
 import Burguer from "../../components/burguer/burguer";
 import BuildControls from "../../components/burguer/build-controls/build-controls";
+import Modal from "../../components/UI/modal/modal";
+import OrderSummary from "../../components/burguer/oder-summary/order-summary";
 
 const INGREDIENT_PRICES = {
   salad: 0.5,
@@ -20,7 +22,8 @@ class BurguerBuilder extends React.Component {
         meat: 0
       },
       totalPrice: 4,
-      purchasable: false
+      purchasable: false,
+      purchasing: false
     };
   }
 
@@ -66,6 +69,9 @@ class BurguerBuilder extends React.Component {
     this.setState({ totalPrice: newPrice, ingredients: updateIngredients });
     this.updatedPurchaseState(updateIngredients);
   };
+  purchaseHandler = () => {
+    this.setState({ purchasing: true });
+  };
   render() {
     const disableInfo = {
       ...this.state.ingredients
@@ -75,6 +81,9 @@ class BurguerBuilder extends React.Component {
     }
     return (
       <div>
+        <Modal show={this.state.purchasing}>
+          <OrderSummary ingredients={this.state.ingredients} />
+        </Modal>
         <Burguer ingredients={this.state.ingredients} />
         <BuildControls
           ingredientAdded={this.addIngredientHandler}
@@ -82,6 +91,7 @@ class BurguerBuilder extends React.Component {
           disabled={disableInfo}
           purchasable={this.state.purchasable}
           price={this.state.totalPrice}
+          ordered={this.purchaseHandler}
         />
       </div>
     );
