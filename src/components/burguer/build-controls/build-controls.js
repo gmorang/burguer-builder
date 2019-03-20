@@ -15,7 +15,12 @@ class BuildControls extends React.Component {
     return (
       <div className="build-controls">
         {controls.map(ctrl => (
-          <BuildControl key={ctrl.label} label={ctrl.label} />
+          <BuildControl
+            key={ctrl.label}
+            label={ctrl.label}
+            type={ctrl.type}
+            added={() => this.props.ingredientAdded(ctrl.type)}
+          />
         ))}
       </div>
     );

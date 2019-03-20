@@ -8,7 +8,9 @@ class BuildControl extends React.Component {
       <div className="build-control">
         <div className="label">{this.props.label}</div>
         <button className="less">Less</button>
-        <button className="more">More</button>
+        <button className="more" onClick={this.props.added}>
+          More
+        </button>
       </div>
     );
   }
