@@ -72,6 +72,9 @@ class BurguerBuilder extends React.Component {
   purchaseHandler = () => {
     this.setState({ purchasing: true });
   };
+  purchaseCancelHandler = () => {
+    this.setState({ purchasing: false });
+  };
   render() {
     const disableInfo = {
       ...this.state.ingredients
@@ -81,7 +84,10 @@ class BurguerBuilder extends React.Component {
     }
     return (
       <div>
-        <Modal show={this.state.purchasing}>
+        <Modal
+          show={this.state.purchasing}
+          modalClosed={this.purchaseCancelHandler}
+        >
           <OrderSummary ingredients={this.state.ingredients} />
         </Modal>
         <Burguer ingredients={this.state.ingredients} />
